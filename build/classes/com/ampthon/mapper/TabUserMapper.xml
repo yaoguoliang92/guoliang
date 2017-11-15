@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ampthon.mapper.TabUserMapper" >
+  <resultMap id="BaseResultMap" type="com.ampthon.pojo.TabUser" >
+    <id column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="phoneno" property="phoneno" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    
+   
+    
+  </resultMap>
+  	 <sql id="Mysql_Pagination_Limit" >
+    <if test="mysqlOffset != null and mysqlLength != null" >
+      <![CDATA[ limit #{mysqlOffset} , #{mysqlLength} ]]>
+    </if>
+  </sql>
+  <sql id="Example_Where_Clause" >
+    <trim prefix="where" prefixOverrides="and|or" >
+     <if test="condition.userid != null" >
+         and userID = #{condition.userid}
+      </if>
+      <if test="condition.password != null" >
+         and password = #{condition.password}
+      </if>
+      <if test="condition.email != null" >
+         and email = #{condition.email}
+      </if>
+      <if test="condition.phoneno != null" >
+         and phoneNo = #{condition.phoneno}
+      </if>
+      <if test="condition.sex != null" >
+         and sex = #{condition.sex}
+      </if>
+      
+      <if test="condition.username != null" >
+         and userName = #{condition.username}
+      </if>
+     
+    
+      
+    
+    
+    </trim>
+  </sql>
+  <sql id="Base_Column_List" >
+    userid, password, email, phoneno, sex, username
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ampthon.pojo.Criteria" >
+    SELECT DISTINCT
+   userid,
+ 
+  password,
+  phoneno,
+  sex,
+  
+  username,
+ 
+  email
+    from tab_user 
+   
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    SELECT DISTINCT
+  	 userid,
+ 	 password,
+ 	 phoneno,
+	 sex,
+     username,
+     email
+    from tab_user 
+    where userid = #{userid}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tab_user
+    where userid = #{userid}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ampthon.pojo.Criteria" >
+    delete from tab_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ampthon.pojo.TabUser" >
+    insert into tab_user (userid, password, email, phoneno, sex,username
+     )
+    values (#{userid}, #{password}, #{email}, #{phoneno}, #{sex}, #{username}
+  )
+  </insert>
+  
+  <select id="countByExample" parameterType="com.ampthon.pojo.Criteria" resultType="java.lang.Integer" >
+    select count(*) from tab_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  
+
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tab_user
+    <set >
+      <if test="record.userid != null" >
+        userid = #{record.userid},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email},
+      </if>
+      <if test="record.phoneno != null" >
+        phoneno = #{record.phoneno},
+      </if>
+      <if test="record.sex != null" >
+        sex = #{record.sex},
+      </if>
+    
+      <if test="record.username != null" >
+        username = #{record.username},
+      </if>
+     
+     
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </update>
+ 
+  <update id="updateByPrimaryKeySelective" parameterType="com.ampthon.pojo.TabUser" >
+    update tab_user
+    <set >
+      <if test="password != null" >
+        password = #{password},
+      </if>
+      <if test="email != null" >
+        email = #{email},
+      </if>
+      <if test="phoneno != null" >
+        phoneno = #{phoneno},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex},
+      </if>
+    
+      <if test="username != null" >
+        username = #{username},
+      </if>
+     
+    </set>
+    where userid = #{userid}
+  </update>
+  <insert id="insertSelective" parameterType="com.ampthon.pojo.TabUser" >
+    insert into tab_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="phoneno != null" >
+        phoneno,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      
+      <if test="username != null" >
+        username,
+      </if>
+   
+     
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid},
+      </if>
+      <if test="password != null" >
+        #{password},
+      </if>
+      <if test="email != null" >
+        #{email},
+      </if>
+      <if test="phoneno != null" >
+        #{phoneno},
+      </if>
+      <if test="sex != null" >
+        #{sex},
+      </if>
+     
+      <if test="username != null" >
+        #{username},
+      </if>
+     
+    </trim>
+  </insert>
+</mapper>

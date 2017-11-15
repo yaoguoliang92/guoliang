@@ -1,0 +1,68 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<style type="text/css">
+	ol, ul{
+		list-style:none;
+		margin-top:30px;
+		margin-left:50px;
+	}
+	.btn_que,.btn_cancel{
+		width:150px;
+		margin-top:20px;
+		margin-left:30px;
+	}
+	.ui_max,.ui_min{
+		display:none;
+	}
+	.sex{
+		widht:30px;
+	}
+	</style>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/addPage.js"></script>
+	<script type="text/javascript">
+var api = frameElement.api, W = api.opener;
+
+function getValue()
+{
+    alert( W.document.getElementById('txt3').value );
+    
+};
+$(function(){  
+	$(".btn_que").click(addUser);
+	$(".btn_cancel").click(closeAddPage);
+})
+	</script>
+</head>
+
+<body>
+	 <ul>
+	     <li>
+	         <span>姓名：</span>
+	         <input type="text" name="username" value="" class="username">
+	     </li>
+	      <li>
+	         <span>密码：</span>
+	         <input type="password" name="password" value="" class="password">
+	     </li>
+	     <li>
+	         <span>性别：</span>
+	      		   男：<input type="radio" name="sex" value="男" class="sex" checked>
+	 		               女： <input type="radio" name="sex" value="女" class="sex">
+	     </li>
+	     <li>
+	         <span>邮箱：</span>
+	         <input type="text" name="" value="" class="email">
+	     </li>
+	     <li>
+	         <span>电话：</span>
+	         <input type="text" name="" value="" class="phoneno">
+	     </li>
+	 </ul>
+	<input type="button" value="确认" class="btn btn-info btn_que">
+	<input type="button" value="取消" class="btn btn-danger btn_cancel">
+</body>
+</html>

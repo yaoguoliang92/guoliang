@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>user</title>
+ 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" src="../lhgDialog-4.2.0/dialog/lhgdialog.min.js"></script>
+		<script type="text/javascript" src="../js/layer/layer.js"></script>
+		<script type="text/javascript" src="../js/user.js"></script>
+		<script type="text/javascript">
+		$(function(){
+			//查询所有用户信息
+			getAllUser();
+			//弹出新增页面
+			$('.add_btn').click(addPage);
+			//绑定编辑按钮
+			$(".table").on("click",".btn_deit",editPage);
+			//绑定删除按钮
+			$(".table").on("click",".btn_delete",deleteUser);
+		});	
+		</script>
+    </head>
+    <body>
+        
+        <div class="iframecontent">
+            <div class="opreate clearfix">
+                <div class="left">
+                    <input type="button" value="添加用户" class="btn btn-blue add_btn">
+                </div>
+            </div>
+            <div class="list">
+                <div class="tablewrap">
+                    <table class="table" width="100%" id="datalist">
+                        <thead>
+                            <tr>
+                                <th class="text-center">名字</th>
+                                <th class="text-center">性别</th>
+                                <th class="text-center">邮箱</th>
+                                <th class="text-center">电话</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr>
+                                <td class="text-center">10</td>
+                                <td class="text-center">单页模型</td>
+                                <td class="text-center">是</td>
+                                <td class="text-center">是</td>
+                                <td class="text-center">
+                                	<input type="button" value="编辑" class="btn btn-info btn_deit">
+                               		<input type="button" value="删除" class="btn btn-danger btn_delete">
+                                </td>
+                            </tr>
+                           <tr>
+                                <td class="text-center">10</td>
+                                <td class="text-center">单页模型</td>
+                                <td class="text-center">是</td>
+                                <td class="text-center">是</td>
+                                <td class="text-center">
+                                	<input type="button" value="编辑" class="btn btn-info btn_deit">
+                               		<input type="button" value="删除" class="btn btn-danger btn_delete">
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                    <div class="page">
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!--JavaScript-->
+        <script>
+            $(function(){
+                $('#all').click(function(){
+
+                    if($(this).prop('checked')){
+                        $('#datalist :checkbox').prop('checked', true);
+                    }else {
+                        $('#datalist :checkbox').prop('checked', false);
+                    }
+
+                });
+                
+                $('#update_test').click(function(){
+                	$.dialog({
+                		width:'200px',
+                		height:'150px',
+                		 max: false, 
+                		 min: false,
+                		content: 'url:addPage.html'
+                	});
+                });
+            });
+        </script>
+    </body>
+</html>

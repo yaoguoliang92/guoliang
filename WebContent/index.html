@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>后台管理系统登录</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+                <script type="text/javascript" src="js/jquery.js"></script>
+                <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+num=0.1;
+window.onload = function(){
+    var ins = document.getElementById("in");
+    ins.style.opacity = num;
+    num+=0.05;
+    if(num>1){
+        num=1;
+        window.clearInterval();
+    }
+}
+window.setInterval("window.onload()",50);
+
+</script>
+    </head>
+    <body>
+    <img id="blur" src="img/2.jpg">
+        <div class="login" id="in">
+            <div class="loginmain">
+                <h4>请登录...</h4>
+                <form action="/" method="get">
+                    
+                    <ul>
+                        <li>
+                            <span>账号：</span>
+                            <input type="text" name="username" value="">
+                        </li>
+                        <li>
+                            <span>密码：</span>
+                            <input type="password" name="password" value="">
+                        </li>
+                      
+                        <li>
+                            <input type="button" name="loginbtn" value="登录">
+                            <span id="text"></span>
+                        </li>
+                    </ul>
+                
+                </form>
+            </div>
+        </div>
+
+     
+    </body>
+</html>
